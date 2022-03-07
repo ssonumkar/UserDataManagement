@@ -1,0 +1,20 @@
+{
+    "id": 2998,
+    "name": "asd",
+    "username": "asfa",
+    "cec_id": "admin1",
+    "ssh_key": {
+        "private_key": "1WhNIsLbAAUYHaaAbDdyfdLfBvDDluAhAawHBalbaVCAFaBMS",
+        "public_key": "AUHDBLADBASCYFWABLAVHADMIN1auhdbladbyfwablavhasfa"
+    },
+    "password": {
+        "usa": "scsacaaausfa",
+        "uae": "scsacaaausfa",
+        "prc": "scsacaaausfa",
+        "ind": "scsacaaausfa"
+    },
+    "roles": "none",
+    "access": "no-access",
+    "created": "2020-05-20 17:05",
+    "modified": "2020-05-20 17:08"
+}

@@ -1,0 +1,111 @@
+#wrapper {
+  padding-left: 181px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -181px;
+  margin-top: 0px;
+  left: 181px;
+  width: 181px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+
+}
+
+.sidebar-colors {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: class="support css-value">content-box;
+  box-sizing: content-box;
+  color: rgba(255,255,255,1);
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: -webkit-linear-gradient(0deg, rgba(40,40,40,1) 0, rgba(74,134,232,1) 100%);
+  background: -moz-linear-gradient(180deg, rgba(40,40,40,1) 0, rgba(74,134,232,1) 100%);
+  background: linear-gradient(180deg, rgba(40,40,40,1) 0, rgba(74,134,232,1) 100%);
+  background-position: 50% 50%;
+  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: auto auto;
+  background-size: auto auto;
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+  font-family: cisco, Arial, sans-serif;
+  overflow:auto;
+  height: 92%;
+}
+.sidebar-colors>a {
+color: #fff;
+}
+
+#page-content-wrapper {
+  width: 100%;
+    position:relative;
+  left: 15px;
+
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 181px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+@media (max-width:767px) {
+
+    #wrapper {
+      padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+      left: 0;
+    }
+
+    #wrapper.active {
+      position: relative;
+      left: 181px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+      left: 181px;
+      width: 181px;
+      transition: all 0.4s ease 0s;
+    }
+
+}
+
+.nav>li>a,.nav>li>a
+{
+color:#fff;
+text-decoration:none;
+padding: 2px 15px;
+}
+
+.nav>li>a:focus,.nav>li>a:hover
+{
+text-decoration:none;
+background-color:#eee;
+color:#000;
+}
+
+.nav-header{
+display:block;
+margin-left:10px;
+}
+
+.nav-header:hover
+{
+text-decoration:none;
+background-color:#eee;
+color:#000;
+}

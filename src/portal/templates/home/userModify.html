@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <br>
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <script>window.alert("{{message}}")</script>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+    <br>
+<div class="container form-group">
+{%if flag=="new"%}
+    <h3>User details</h3>
+    <form method="POST" action="/addCredential">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+            <tr><th>Field</th><th>Edit</th></tr>
+            </thead>
+            <tr><td>Name                 </td> <td> <input  class="form-control" required="required"  name="name" ></td> </tr>
+            <tr><td>Username               </td> <td> <input  class="form-control"  name="username" required="required" ></td> </tr>
+            <tr><td>ssh_key              </td> <td> <input  class="form-control" id="ssh"   name="ssh_key" ><input id="checkSSH" type="checkbox" onchange="myFunc()" >System Generated</label></td></tr>
+            <tr><td>Password_domain_US              </td> <td> <input  class="form-control" required="required" id="passwordUSA2"name="passwordUS" ><input id="check2" type="checkbox" onchange="myFunc2()" >sameForAll</label></td> </td>  </tr>
+            <tr><td>Password_domain_UAE             </td> <td> <input  class="form-control" required="required" id="passwordUAE2"  name="passwordUAE" ></td>  </td></tr>
+            <tr><td>Password_domain_PRC              </td> <td> <input  class="form-control" required="required" id="passwordPRC2"  name="passwordPRC" ></td> </td>  </tr>
+            <tr><td>Password_domain_IND             </td> <td> <input  class="form-control" required="required" id="passwordIND2"  name="passwordIND" ></td>  </td>  </tr>
+            </table>
+        <p><center><input class="btn btn-primary" type="submit" value="submit" name="form" /></center></p>
+    </form>
+{% elif user.username==rec.cec_id %}
+<h3>User details</h3>
+<form method="POST" action="/updateUser/{{rec.username}}">
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr><th>Field</th><th>Value</th><th>Edit</th></tr>
+        </thead>
+        <tr><td>Id              </td><td> {{ rec.id }}          </td> <td> <input  class="form-control"  value="{{rec.id}}" name="uid" disabled="true"> </td> </tr>
+        <tr><td>Name            </td><td> {{ rec.name }}     </td> <td> <input  class="form-control" disabled="true"  value="{{rec.name}}" name="name"></td> </tr>
+        <tr><td>Username         </td><td> {{ rec.username }}      </td> <td> <input  class="form-control"  value="{{rec.username}}" name="username" disabled="true"></td> </tr>
+        <tr><td>ssh_key         </td><td> {{ rec.ssh_key }}       </td> <td> <input  class="form-control" required="required" id="ssh1" value="{{rec.ssh_key}}" name="ssh_key"><input id="checkSSH1" type="checkbox" onchange="myFunc4()" >System Generated</label></td></tr>
+        <tr><td>Password_domain_US         </td><td> {{ rec.password.usa }}     </td> <td> <input  class="form-control" required="required" id="password.usa" value="{{rec.password.usa}}" name="passwordUS"><label><input type="checkbox" onchange="myFunc1()" id="check1">sameForAll</label> </td> </td>  </tr>
+        <tr><td>Password_domain_UAE         </td><td> {{ rec.password.uae }}     </td> <td> <input  class="form-control" required="required" id="password.uae" value="{{rec.password.uae}}" name="passwordUAE"></td>  </td></tr>
+        <tr><td>Password_domain_PRC         </td><td> {{ rec.password.prc }}     </td> <td> <input  class="form-control" required="required" id="password.prc" value="{{rec.password.prc}}" name="passwordPRC"></td> </td>  </tr>
+        <tr><td>Password_domain_IND         </td><td> {{ rec.password.ind }}    </td> <td> <input  class="form-control"id="password.ind" required="required"  value="{{rec.password.ind}}" name="passwordIND"></td>  </td>  </tr>
+        {%if user.isAdmin%}
+        <tr><td>Access         </td><td> {{ rec.access }}      </td><td> <select class="browser-default custom-select" name="access"> <option value="{{rec.access}}">{{rec.access}}</option><option value="no-access">no-access</option><option value="all">all</option></select> </td>  </tr>
+        <tr><td>Roles         </td><td> {{ rec.roles }}      </td><td> <select class="browser-default custom-select" name="roles"> <option value="{{rec.roles}}">{{rec.roles}}</option><option value="super-admin">super-admin</option><option value="qa-admin">qa-admin</option><option value="service">service</option></select> </td>  </tr>
+        {%else%}
+        <tr><td>Access         </td><td> {{ rec.access }}      </td><td> <input  class="form-control"  value="{{rec.access}}" disabled="true"> </td>  </tr>
+        <tr><td>Roles         </td><td> {{ rec.roles }}      </td><td> <input  class="form-control"  value="{{rec.roles}}" disabled="true"> </td>  </tr>
+        {%endif%}
+        </table>
+    <p><center><input class="btn btn-primary" type="submit" value="Update" name="form"/></center></p>
+</form>
+
+    {%else%}
+    <h3>User details</h3>
+<form method="POST" action="/updateUser/{{rec.username}}">
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr><th>Field</th><th>Value</th><th>Edit</th></tr>
+        </thead>
+        <tr><td>Id              </td><td> {{ rec.id }}          </td> <td> <input  class="form-control"  value="{{rec.id}}" name="id" disabled="true"> </td> </tr>
+        <tr><td>Name            </td><td> {{ rec.name }}     </td> <td> <input  class="form-control"  value="{{rec.name}}" name="name" disabled="true"></td> </tr>
+        <tr><td>Username         </td><td> {{ rec.username }}      </td> <td> <input  class="form-control" disabled="true" value="{{rec.username}}" name="username"></td> </tr>
+        <tr><td>ssh_key         </td><td> {{ rec.ssh_key }}       </td> <td> <input  class="form-control"  value="{{rec.ssh_key}}" name="ssh_key" disabled="true"></td></tr>
+        <tr><td>Password_domain_US         </td><td> {{ rec.password.usa }}     </td> <td> <input  class="form-control"  value="{{rec.password.usa}}" name="passwordUS" disabled="true"></td> </td>  </tr>
+        <tr><td>Password_domain_UAE         </td><td> {{ rec.password.uae }}     </td> <td> <input  class="form-control"  value="{{rec.password.uae}}" name="passwordUAE" disabled="true"></td>  </td></tr>
+        <tr><td>Password_domain_PRC         </td><td> {{ rec.password.prc }}     </td> <td> <input  class="form-control"  value="{{rec.password.prc}}" name="passwordPRC" disabled="true"></td> </td>  </tr>
+        <tr><td>Password_domain_IND         </td><td> {{ rec.password.ind }}    </td> <td> <input  class="form-control"  value="{{rec.password.ind}}" name="passwordIND" disabled="true"></td>  </td>  </tr>
+        <tr><td>Access         </td><td> {{ rec.access }}      </td><td> <select class="browser-default custom-select" name="access"> <option value="{{rec.access}}">{{rec.access}}</option><option value="no-access">no-access</option><option value="all">all</option></select> </td>  </tr>
+        <tr><td>Roles         </td><td> {{ rec.roles }}      </td><td> <select class="browser-default custom-select" name="roles"> <option value="{{rec.roles}}">{{rec.roles}}</option><option value="super-admin">super-admin</option><option value="qa-admin">qa-admin</option><option value="service">service</option></select> </td>  </tr>
+        </table>
+    <p><center><input class="btn btn-primary" type="submit" value="Update" name="form"/></center></p>
+</form>
+    {%endif%}
+
+
+</div>
+<script>
+    function myFunc1(){
+        var check=document.getElementById("check1");
+        if(check.checked)
+        {
+            var val=document.getElementById("password.usa").value;
+            document.getElementById("password.uae").value=val
+            document.getElementById("password.prc").value=val
+            document.getElementById("password.ind").value=val
+        }
+    }
+    function myFunc2(){
+        var check=document.getElementById("check2");
+        if(check.checked)
+        {
+            var val=document.getElementById("passwordUSA2").value;
+            document.getElementById("passwordUAE2").value=val
+            document.getElementById("passwordPRC2").value=val
+            document.getElementById("passwordIND2").value=val
+        }
+
+    }
+    function myFunc3(){
+        var check=document.getElementById("check3");
+        if(check.checked)
+        {
+            document.getElementById("adminFlag").value="True";
+        }
+        else
+        {
+            document.getElementById("adminFlag").value="False";
+        }
+    }
+
+    function myFunc(){
+        var check=document.getElementById("checkSSH");
+        if(check.checked)
+        {
+            document.getElementById("ssh").value=""
+            document.getElementById("ssh").readOnly= true;
+        }
+         else{
+                    document.getElementById("ssh").readOnly= false;
+                    document.getElementById("ssh").value=""
+        }
+    }
+    var val1=document.getElementById("ssh1").value
+    function myFunc4(){
+        var check=document.getElementById("checkSSH1");
+
+        if(check.checked)
+        {
+            document.getElementById("ssh1").value=""
+            document.getElementById("ssh1").readOnly= true;
+        }
+         else{
+                    document.getElementById("ssh1").readOnly= false;
+                    document.getElementById("ssh1").value=val1
+        }
+    }
+</script>
+
+{% endblock %}

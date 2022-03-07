@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-cerulean.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.fontAwesome.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/breadcrumb.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/graph.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chosen.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chosen-bootstrap.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/daterangepicker.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/metrotiles.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/badgets_labels.css') }}"/>
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper-utils.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tooltip.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/daterangepicker.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-dateformat.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/columnSearchTables.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jszip.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pdfmake.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vfs_fonts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/notify.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/metrotiles.js') }}"></script>
+
+</head>
+<body>
+<div class="ftdash_header" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='images/cisco-logo2.png') }}" alt="Cisco" class="ftdash_ciscologo" >
+            <span style="font-size:1.65rem;">User Management System</span> </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                         <a class="nav-link" href="/home">My Credentials <span class="sr-only">(current)</span></a>
+                      </li>
+                     {% if user.isAdmin %}
+                     <li class="nav-item active">
+                         <a class="nav-link" href="/allUsers">All User Credentials <span class="sr-only">(current)</span></a>
+                      </li>
+                    {%endif%}
+
+                     </ul>
+            <div class="col-md-1 btn-group btn-notifications">
+                <a id="userInfo" class="btn btn-info bottom" title="" data-placement="bottom" data-toggle="tooltip" data-html="true" href="#"
+                   data-original-title="  {{user.user_name}}  <br/> {%if user.isAdmin %}Administrator{%else%}Regular User{%endif%}"><i class="fa fa-user"></i> {{user.username}}</a>
+             </div>
+
+             </div>
+    </nav>
+</div>
+<div class="ftdash_content">
+{% block content %}
+
+{% endblock %}
+</div>
+
+    <script src="{{ url_for('static', filename='js/chosen.jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/prism.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+
+</body>
+</html>

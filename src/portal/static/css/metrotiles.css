@@ -1,0 +1,95 @@
+.dynamicTile .col-sm-2.col-xs-4{
+    padding:5px;
+}
+
+.dynamicTile .col-sm-3.col-xs-3{
+    padding:5px;
+}
+
+.dynamicTile .col-sm-4.col-xs-8{
+    padding:5px;
+}
+
+#tile1{
+    background: rgb(62,157,215);
+    /*rgb(0,172,238);*/
+}
+
+#tile2{
+    /*background: rgb(243,243,243);*/
+    background: rgb(0,142,0);
+}
+
+#tile3{
+    background: darkorange;
+}
+
+#tile4{
+    /* background-image: url('http://handsontek.net/demoimages/tiles/facebook.png');
+    background-size: cover; */
+    background: darkolivegreen;
+
+}
+
+#tile5{
+    background: rgb(175,26,63);
+}
+
+#tile6{
+    background: #005073;
+}
+
+#tile7{
+    /*background: white;*/
+    background: rgb(209,70,37);
+
+}
+
+#tile8{
+    background: rgb(0,93,233);
+}
+
+#tile9{
+    background: rgb(0,142,0);
+}
+
+#tile10{
+    background: rgb(0,93,233);
+}
+#tile1:hover,#tile2:hover,#tile3:hover,#tile4:hover,#tile5:hover,#tile6:hover,#tile7:hover,#tile8:hover,#tile9:hover,#tile10:hover{
+    background: black;
+    text-decoration: none; 
+}
+#tile1>a,#tile2>a,#tile3>a,#tile4>a,#tile5>a,#tile6>a,#tile7>a,#tile8>a,#tile9>a,#tile10>a{
+
+    text-decoration: none; 
+}
+
+.tilecaption{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    margin:0!important;
+    text-align: center;
+    color:white;
+    font-family: Segoe UI;
+    font-weight: lighter;
+    text-decoration: none; 
+
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+

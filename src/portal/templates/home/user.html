@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+    <br>
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+                   <li><font color="blue">{{ message }}</font></li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+    <br>
+    <br>
+<div class="container form-group">
+    {%if flag!="root_user"%}
+
+    <div class="col-lg-1 btn-group btn-breadcrumb pull-right">
+        <a href="/updateUser/{{userRecord.username}}" class="btn btn-default"><i class="fa fa-edit"></i> Edit</a>
+    </div>
+
+<h3>User details</h3>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr><th>Field</th><th>Value</th></tr>
+        </thead>
+
+        <tr><td>Id                      </td><td> {{ userRecord.id }}                </td> </tr>
+        <tr><td>Name                </td><td> {{userRecord.name}}            </td> </tr>
+        <tr><td>userName                   </td><td> {{ userRecord.username }}              </td> </tr>
+        <tr><td>ssh_key                    </td><td> {{ userRecord.ssh_key }}          </td> </tr>
+        <tr><td>Password_domain_US                 </td><td> {{ userRecord.password.usa }}              </td> </tr>
+        <tr><td>Password_domain_UAE             </td><td> {{ userRecord.password.uae }}</td> </tr>
+        <tr><td>Password_domain_PRC                 </td><td> {{ userRecord.password.prc }}</td> </tr>
+        <tr><td>Password_domain_INC                 </td><td> {{ userRecord.password.ind  }}</td> </tr>
+        <tr><td>Access            </td><td> {{ userRecord.access }}</td> </tr>
+        <tr><td>Roles               </td><td> {{ userRecord.roles }}</td> </tr>
+    </table>
+<hr/>
+{%endif%}
+{%if flag=="root_user"%}
+    <h3>User details</h3>
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr><th>Field</th><th>Value</th></tr>
+        </thead>
+        <tr><td>Id                      </td><td> {{ userRecord.id }}                </td> </tr>
+        <tr><td>userName                   </td><td> {{ userRecord.username }}              </td> </tr>
+        <tr><td>isAdmin              </td><td> {{ userRecord.isAdmin }}</td> </tr>
+    </table>
+    <div align="center">
+    <a href="/addCredential?flag=new"><button class="btn btn-primary">Add Credential</button> <span class="sr-only">(current)</span></a>
+</div>
+{%endif%}
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+                   <li><font color="blue">{{ message }}</font></li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+    <br>
+<h3 class="col-lg-11 col-md-11 col-sm-11" style="float: none; margin: 0 auto;">Credentials</h3>
+<div class="row">
+    <div class="col-lg-11 col-md-11 col-sm-11" style="float: none; margin: 0 auto;">
+        <div class="card filterable">
+            <div class="card-title">
+                 {%if flag =="user"%}
+                     <div class="pull-left col-lg-11 col-md-11 col-sm-11">
+                        <br>
+                        <a href="/addCredential?flag=new"><button class="btn btn-primary">Add Credential</button> <span class="sr-only">(current)</span></a>
+                     </div>
+                {%endif%}
+                <div class="pull-right">
+                    <button class="btn btn-secondary btn-sm btn-filter"><i class="fa fa-filter" aria-hidden="true"></i>
+                        Filter
+                    </button>
+                </div>
+            </div>
+
+            <table id="recent_events_home_table" class="table table-hover table-responsive table-clickable pod_table columnSearchTable">
+                <thead>
+                <tr >
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Root User</th>
+                    <th>Access</th>
+                    <th>Roles</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr class="filters" style="display:none;">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Root User</th>
+                    <th>Access</th>
+                    <th>Roles</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                         {% for value in records %}
+                                <tr class="clickable-row" data-href="/user/{{value.username}}">
+                                <td> {{ value["id"] }} </td>
+                                <td>{{ value.name }} </td>
+                                <td> {{ value.username }} </td>
+                                <td>{{ value.cec_id }} </td>
+                                <td> {{ value.access }} </td>
+                               <td> {{ value.roles }} </td>
+                            </tr>
+                         {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
